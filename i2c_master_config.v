@@ -90,7 +90,7 @@ module i2c_master_config(
 				0	:	begin	i2c_config		<= I2C_Single_Write_Byte;	
 								i2c_dev_addr	<= 8'h50;
 								i2c_reg_addr	<= 8'h00;		
-								i2c_reg_data	<= 8'hBB;	end	
+								i2c_reg_data	<= 8'h11;	end	
 				//状态1，单次读取模式，读取AT24C02中的00地址的数据并将数据存储在寄存器中
 				1	:	begin	i2c_config		<= I2C_Single_Read_Byte;	
 								i2c_dev_addr	<= 8'h50;
