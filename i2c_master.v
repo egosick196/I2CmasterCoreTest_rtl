@@ -8,13 +8,13 @@ module i2c_master(
 						);
 											
 	input			sys_clk;
-	input			rst_n;			//复位信号，低电平有效
+	(*mark_debug = "true"*) input			rst_n;  // 复位信号，低电平有效
 	output			scl;			//I2C时钟总线
 	inout			sda;			//I2C数据总线
-	output	[7:0]	at24c02_00_data;
+	(*mark_debug = "true"*) output	[7:0]	at24c02_00_data;
 	
 							
-	wire	clk_div_12M, clk_div_100k;			//由分频module产生的时钟信号
+	(*mark_debug = "true"*) wire	clk_div_12M, clk_div_100k;			//由分频module产生的时钟信号
 
 	clkAdapter clkAdapter_u1(
 		.CLK_IN1(sys_clk),
@@ -37,7 +37,7 @@ module i2c_master(
 	wire	[7:0]	i2c_config;		//I2C模式配置信号
 	wire	[7:0]	i2c_ack;		//I2C响应信号
 	wire	[7:0]	state_debug;	//状态指示信号
-	
+
 	i2c_master_config i2c_master_config_inst(
 		.clk_12m(clk_div_12M),
 		.rst_n(rst_n),
