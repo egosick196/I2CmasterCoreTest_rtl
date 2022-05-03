@@ -77,7 +77,7 @@ module i2c_master_config(
     reg		[6:0]	i2c_dev_addr;	//设备地址
     reg		[7:0]	i2c_reg_addr;	//寄存器地址
     reg		[7:0]	i2c_reg_data;	//寄存器数据(写入操作有效)
-    reg		[7:0]	i2c_config;		//I2C工作模式配置寄存器
+    (*mark_debug = "true"*) reg		[7:0]	i2c_config;		//I2C工作模式配置寄存器
     always@(posedge clk_12m or negedge rst_n) begin 
         if(!rst_n) begin 
             i2c_config	<=	8'd0;

@@ -20,7 +20,7 @@ module i2c_master_logic(
 	input	[6:0]	i2c_device_address;	//I2C设备地址
 	input	[7:0]	i2c_reg_address;	//I2C读/写目标寄存器地址
 	input	[7:0]	i2c_write_reg_data;	//I2C写入数据
-	input	[7:0]	i2c_config;
+	(*mark_debug = "true"*) input	[7:0]	i2c_config;
 
 	output	[7:0]	state_debug;	
 	output	[7:0]	i2c_ack;
@@ -36,16 +36,14 @@ module i2c_master_logic(
 			   [7] = 0
   	*/
 	
-	
-	
 	//I2C SCL
-	reg		scl_r 	= 1'b1;				
+	(*mark_debug = "true"*) reg		scl_r 	= 1'b1;				
 	assign	scl 	= scl_r;
 	
 	//I2C SDA IN/OUT控制
-	reg 	sda_ctl = 1'b0;
-	reg		sda_r 	= 1'b1;  
-	assign 	sda = sda_ctl?sda_r : 1'bz;
+	(*mark_debug = "true"*) reg 	sda_ctl = 1'b0;
+	(*mark_debug = "true"*) reg		sda_r 	= 1'b1;  
+	assign 	sda = sda_ctl? sda_r : 1'bz;
 	
 	reg		[7:0]	i2c_read_data;		//I2C读取数据
 	
@@ -94,7 +92,7 @@ module i2c_master_logic(
 	
 	reg	[2:0]	cnt_start;	
 	reg	[3:0]	cnt_dev_addr;
-	reg	[2:0]	cnt_ack_addr;
+	(*mark_debug = "true"*) reg	[2:0]	cnt_ack_addr;
 	reg	[3:0]	cnt_reg_addr;
 	reg	[2:0]	cnt_ack_r_addr;
 	reg	[3:0]	cnt_write_reg_data;

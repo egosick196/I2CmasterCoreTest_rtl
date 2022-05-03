@@ -73,7 +73,7 @@ module i2c_master(
     wire	[7:0]	i2c_reg_data;	//I2C写入寄存器数据
     wire	[7:0]	i2c_reg_addr;	//I2C写入寄存器地址
     wire	[6:0]	i2c_dev_addr;	//从机设备地址
-    wire	[7:0]	i2c_config;		//I2C模式配置信号
+    (*mark_debug = "true"*) wire	[7:0]	i2c_config;		//I2C模式配置信号
     wire	[7:0]	i2c_ack;		//I2C响应信号
     wire	[7:0]	state_debug;	//状态指示信号
 
