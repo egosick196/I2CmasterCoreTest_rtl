@@ -82,8 +82,8 @@ module i2c_master_logic(
 	
 	parameter		WAIT			=	15'b100_0000_0000_0000;
 	
-	reg		[14:0]	state_current;		
-	reg		[14:0]	state_next;
+	(*mark_debug = "true"*) reg		[14:0]	state_current;		
+	(*mark_debug = "true"*) reg		[14:0]	state_next;
 	
 	always@(posedge clk_in or negedge rst_n) begin 
 		if(!rst_n) 
@@ -319,7 +319,8 @@ module i2c_master_logic(
 			cnt_start_r	<= 1'b0;		
 			cnt_dev_addr_r <= 1'b0;	
 			cnt_ack_addr_r <= 1'b0;	
-			cnt_s_ack <= 1'b0; end	
+			cnt_s_ack <= 1'b0; 
+			i2c_read_data <= 8'd0; end	
 		else begin 	
 			case(state_current)
 				IDLE			:	begin	sda_ctl	<= 1'b1;

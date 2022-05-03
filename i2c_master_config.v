@@ -83,7 +83,8 @@ module i2c_master_config(
             i2c_config	<=	8'd0;
             i2c_dev_addr<=	7'd0;
             i2c_reg_addr<=	8'd0;
-            i2c_reg_data<=	8'd0; end
+            i2c_reg_data<=	8'd0;
+            at24c02_00_data <= 8'd0; end
         else begin 
             case(i2c_state)
                 //状态0，单次写入模式，在AT24C02中的00地址写入BB
